@@ -8,26 +8,7 @@
        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
        http://www.dongpo.li/schema/sample http://www.dongpo.li/schema/sample.xsd">
 
-<!--    <context:property-placeholder location="classpath*:*.properties"/>-->
-<!--    <context:component-scan base-package="li.dongpo.tc" />-->
-    
     <sample:sample name="name" />
 
-    <aop:aspectj-autoproxy />
-    <aop:config>
-        <aop:aspect id="sampleAspect" ref="sampleLogger">
-            <aop:pointcut id="samplePointcut" expression="execution(* li.dongpo.tc.service.*.*(..))" />
-            <aop:after method="after" pointcut-ref="samplePointcut" />
-        </aop:aspect>
-    </aop:config>
-
-    <bean id="sampleService" class="li.dongpo.tc.service.SampleServiceImpl">
-        <property name="depService" ref="depService" />
-    </bean>
-    <bean id="depService" class="li.dongpo.tc.service.DepService">
-        <property name="sampleService" ref="sampleService" />
-    </bean>
-
-    <bean id="sampleBeanPostProcessor" class="li.dongpo.tc.service.SampleBeanPostProcessor" />
-    <bean id="sampleLogger" class="li.dongpo.tc.service.SampleLogger" />
+    <bean id="sampleService" class="li.dongpo.tc.service.SampleServiceImpl" />
 </beans>
